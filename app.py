@@ -26,28 +26,6 @@ def gen(camera):
 			b'Content-Type: image/jpeg\r\n\r\n'+frame+b'\r\n\r\n')
 		#pp(image)
 
-def pp(image):
-	mm = tf.keras.models.load_model('covid_model.pkl')
-	face_clsfr =cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-	color_dict={1:(0,0,255),0:(0,255,0)}
-	faces=face_clsfr.detectMultiScale(image,1.3,5)
-	for (x,y,w,h) in faces:
-		face_img=image[y:y+w,x:x+w]
-		resized=cv2.resize(face_img,(64,64))
-		face_image = np.expand_dims(resized,axis=0)
-		result=mm.predict(face_image)
-		pred = result[0][0]>0.5
-		pred = int(pred==True)
-		print(pred)
-		if pred==1:
-			prediction='No Mask Detected'
-		else:
-			prediction='Mask Detected'
-
-		cv2.rectangle(image,(x,y),(x+w,y+h),color_dict[pred],2)
-		cv2.rectangle(image,(x,y-40),(x+w,y),color_dict[pred],-1)
-		cv2.putText(image, prediction , (x, y-10),cv2.FONT_HERSHEY_SIMPLEX,0.8,(255,255,255),2)
-
 @app.route("/video")
 def video():
 	return Response(gen(VideoCamera()),mimetype='multipart/x-mixed-replace; boundary=frame')
