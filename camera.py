@@ -42,9 +42,6 @@ class VideoCamera(object):
 		data.append(jpeg.tobytes())
 		return data
 
-	def runn(img):
-		print(img)
-
 
 
 
