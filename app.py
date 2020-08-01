@@ -1,6 +1,5 @@
 import tensorflow as tf
 from flask import Flask,request,jsonify,render_template,url_for,send_from_directory,Response
-import cv2
 #making Single prediction
 from camera import VideoCamera
 from keras.preprocessing import image
