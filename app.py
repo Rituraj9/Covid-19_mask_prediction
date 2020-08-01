@@ -15,7 +15,7 @@ app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 1
 
 class VideoCamera(object):
 	def __init__(self):
-		self.stream = WebcamVideoStream(src=0).start()
+		self.stream = WebcamVideoStream(src=-1).start()
 		time.sleep(2.0)
 
 	def __del__(self):
