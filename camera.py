@@ -27,7 +27,7 @@ class VideoCamera(object):
 			result=mm.predict(face_image)
 			pred = result[0][0]>0.5
 			pred = int(pred==True)
-			print(pred)
+			#print(pred)
 			if pred==1:
 				prediction='No Mask Detected'
 			else:
