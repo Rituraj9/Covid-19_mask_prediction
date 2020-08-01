@@ -1,9 +1,13 @@
 import tensorflow as tf
 from flask import Flask,request,jsonify,render_template,url_for,send_from_directory,Response
 #making Single prediction
-from camera import VideoCamera
+#from camera import VideoCamera
 from keras.preprocessing import image
 import numpy as np
+import cv2
+from imutils.video import WebcamVideoStream
+import time
+
 COUNT = 0
 app = Flask(__name__)
 
