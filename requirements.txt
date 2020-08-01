@@ -29,6 +29,7 @@ itsdangerous==1.1.0
 Jinja2==2.11.2
 joblib==0.16.0
 Keras==2.3.1
+opencv-python==4.3.0.36
 Keras-Applications==1.0.8
 Keras-Preprocessing==1.1.2
 Markdown==3.2.2
